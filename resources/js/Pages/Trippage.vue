@@ -1,6 +1,5 @@
 <template>
     <div class="p-4 space-y-4">
-      <!-- Input for Destination -->
       <div class="relative">
         <input
           v-model="newDestination"
@@ -23,7 +22,6 @@
         </ul>
       </div>
 
-      <!-- Add Destination Button -->
       <button
         @click="addDestination"
         class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -31,15 +29,12 @@
         Add Destination
       </button>
 
-      <!-- Route Information -->
       <div v-if="routeInfo" class="bg-blue-100 p-4 border border-blue-200 rounded-lg shadow-sm">
         <p>{{ routeInfo }}</p>
       </div>
 
-      <!-- Map Display -->
       <div id="map" class="w-full h-80 rounded-lg shadow-md"></div>
 
-      <!-- Journey Summary -->
       <div class="bg-gray-100 p-4 border border-gray-300 rounded-lg shadow-sm">
         <h3 class="text-lg font-semibold mb-2">Journey Summary</h3>
         <p>Total Distance: {{ journeySummary.totalDistance.toFixed(2) }} km</p>
@@ -47,7 +42,6 @@
         <p>Total Fuel: {{ journeySummary.totalFuel.toFixed(2) }} liters</p>
       </div>
 
-      <!-- Destinations List -->
       <ul class="space-y-2">
         <li
           v-for="destination in destinations"
@@ -83,7 +77,7 @@ const selectedCoords = ref(null);
 const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
 const csrfToken = csrfTokenMeta ? csrfTokenMeta.getAttribute('content') : '';
 
-const pois = ref([]); // Array to store Points of Interest (POIs)
+const pois = ref([]);
 
 // Initialize journey summary data
 const journeySummary = ref({
@@ -92,14 +86,13 @@ const journeySummary = ref({
   totalFuel: 0,
 });
 
-// Fetch existing destinations when component is mounted
 onMounted(() => {
   initializeMap();
 });
 
 // Initialize map and fetch user location
 const initializeMap = () => {
-  mapInstance.value = map('map').setView([51.505, -0.09], 13); // Set initial view with zoom level 13
+  mapInstance.value = map('map').setView([51.505, -0.09], 13);
   tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapInstance.value);
 
   // Watch user's location and update map
