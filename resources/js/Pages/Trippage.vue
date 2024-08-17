@@ -152,7 +152,7 @@ const updateUserLocation = (latitude, longitude) => {
 const onMapDoubleClick = async (event) => {
   const { lat, lng } = event.latlng;
 
-  // Reverse geocode to get location name
+
   try {
     const response = await axios.get('https://nominatim.openstreetmap.org/reverse', {
       params: {
@@ -173,7 +173,7 @@ const onMapDoubleClick = async (event) => {
   }
 };
 
-// Fetch destinations from the server
+
 const fetchDestinations = async () => {
   try {
     const response = await axios.get('/api/destinations');
@@ -184,7 +184,7 @@ const fetchDestinations = async () => {
   }
 };
 
-// Fetch autocomplete suggestions based on user input
+
 const fetchSuggestions = async () => {
   if (newDestination.value.length < 3) {
     suggestions.value = [];
@@ -222,38 +222,35 @@ const selectSuggestion = (suggestion) => {
 // Add destination
 const addDestination = async () => {
   try {
-    // Get the user's current position from the map
+
     const userPosition = mapInstance.value.getCenter();
 
-    // Check if the user has selected a destination from the suggestions or map
+
     if (!selectedCoords.value) {
       throw new Error('Please select a destination from the suggestions or map.');
     }
 
-    // Make the POST request to add the destination
+
     const response = await axios.post('/api/destinations', {
       name: newDestination.value,
       latitude: selectedCoords.value.latitude,
       longitude: selectedCoords.value.longitude,
     }, {
       headers: {
-        'X-CSRF-TOKEN': csrfToken, // Include CSRF token in the headers
+        'X-CSRF-TOKEN': csrfToken,
         'Content-Type': 'application/json',
       },
     });
 
-    // Update the list of destinations with the newly added destination
     destinations.value.push(response.data);
 
-    // Reset the input fields
     newDestination.value = '';
     selectedCoords.value = null;
 
-    // Display the route on the map from the user's current location to the selected destination
     L.Routing.control({
       waypoints: [
-        L.latLng(userPosition.lat, userPosition.lng), // User's current location
-        L.latLng(response.data.latitude, response.data.longitude), // Destination coordinates
+        L.latLng(userPosition.lat, userPosition.lng),
+        L.latLng(response.data.latitude, response.data.longitude),
       ],
       routeWhileDragging: true,
       lineOptions: {
@@ -284,7 +281,7 @@ const updateJourneySummary = (summary) => {
   journeySummary.value.totalFuel += calculateFuelUsage(summary.totalDistance); // Example function to calculate fuel usage
 };
 
-// Example function to calculate fuel usage (assuming 7 liters per 100 km)
+// Calculate fuel usage (assuming 7 liters per 100 km)
 const calculateFuelUsage = (distance) => {
   const fuelConsumptionRate = 7; // liters per 100 km
   return (distance / 1000) * (fuelConsumptionRate / 100);
