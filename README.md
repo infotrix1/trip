@@ -6,6 +6,7 @@ Welcome to the Trip Planner application! This web app allows users to plan their
 
 - **User Authentication**: Register and log in to manage your destinations.
 - **Add Destinations**: Add new destinations via an input form or by clicking on a map.
+- **Suggestion**: Added suggestion selection for user to have full address of their pre destination location.
 - **View Routes**: Display routes between destinations and your current location on an interactive map.
 - **Rearrange Destinations**: Change the order of destinations to customize your travel plan.
 - **Points of Interest**: View popular attractions or points of interest near your destinations.
