@@ -67,7 +67,7 @@
   </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { map, tileLayer, marker } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -99,22 +99,23 @@ onMounted(() => {
 
 // Initialize map and fetch user location
 const initializeMap = () => {
-  mapInstance.value = map('map').setView([51.505, -0.09], 2);
+  mapInstance.value = map('map').setView([51.505, -0.09], 13); // Set initial view with zoom level 13
   tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapInstance.value);
 
-  // Fetch user location and update map
+  // Watch user's location and update map
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.watchPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
-        mapInstance.value.setView([latitude, longitude], 13);
-        marker([latitude, longitude])
-          .addTo(mapInstance.value)
-          .bindPopup('You are here!')
-          .openPopup();
+        updateUserLocation(latitude, longitude);
       },
       (error) => {
         console.error('Error getting location', error);
+      },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 10000,
+        timeout: 5000
       }
     );
   } else {
@@ -125,6 +126,26 @@ const initializeMap = () => {
   mapInstance.value.on('dblclick', onMapDoubleClick);
 
   fetchDestinations();
+};
+
+// Update map and marker with the user's location
+const updateUserLocation = (latitude, longitude) => {
+  // Only update the view if the user’s location has changed significantly
+  if (!mapInstance.value._lastLatLng || mapInstance.value._lastLatLng.lat !== latitude || mapInstance.value._lastLatLng.lng !== longitude) {
+    mapInstance.value.setView([latitude, longitude], 13); // Set the zoom level to 13
+    mapInstance.value._lastLatLng = { lat: latitude, lng: longitude }; // Store the last location
+  }
+
+  // Remove old user marker if it exists
+  if (markers.value.user) {
+    mapInstance.value.removeLayer(markers.value.user);
+  }
+
+  // Add a new marker for the user's location
+  markers.value.user = marker([latitude, longitude])
+    .addTo(mapInstance.value)
+    .bindPopup('You are here!')
+    .openPopup();
 };
 
 // Handle double-click on the map to add a destination
