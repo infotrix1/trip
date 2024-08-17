@@ -48,9 +48,8 @@ cd trip
 2. Configure the environment on .env
 3. Create a new database in your MySQL server.
 4. Run the migrations using php artisan migrate.
-5. Run the seeders using php artisan db:seed.
-6. Run the command php artisan key:generate to generate a new application key.
-7. Run the command php artisan serve to start the server.
+5. Run the command php artisan key:generate to generate a new application key.
+6. Run the command php artisan serve to start the server.
 
 ### Procedure for Setup Frontend
 1. Install the dependencies using npm install.
