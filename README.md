@@ -1,66 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Trip Planner Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Welcome to the Trip Planner application! This web app allows users to plan their trips by adding destinations, viewing routes between locations, and exploring points of interest. It's built using Laravel, Vue 3, and Leaflet for a modern, interactive experience.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **User Authentication**: Register and log in to manage your destinations.
+- **Add Destinations**: Add new destinations via an input form or by clicking on a map.
+- **View Routes**: Display routes between destinations and your current location on an interactive map.
+- **Rearrange Destinations**: Change the order of destinations to customize your travel plan.
+- **Points of Interest**: View popular attractions or points of interest near your destinations.
+- **Journey Summary**: View a summary of your journey, including total distance, time, and fuel consumption.
+- **Responsive Design**: Fully responsive interface to ensure a smooth experience on all devices.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technologies Used
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Frontend**:
+  - Vue 3
+  - Tailwind CSS
+  - Leaflet (for maps)
+  - Axios (for HTTP requests)
 
-## Learning Laravel
+- **Backend**:
+  - Laravel (PHP framework)
+  - Sanctum (for API token authentication)
+  - MySQL (for database)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Follow these steps to set up the Travel Planner application on your local machine.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Prerequisites
 
-## Laravel Sponsors
+- [Node.js](https://nodejs.org/) (includes npm)
+- [Composer](https://getcomposer.org/) (for PHP dependencies)
+- [MySQL](https://www.mysql.com/) (or another compatible database)
+- [Laravel](https://laravel.com/) (PHP framework)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Clone the Repository
 
-### Premium Partners
+git clone https://github.com/infotrix1/trip.git
+cd trip
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Procedure on installing the application for Backend
 
-## Contributing
+1. Install the dependencies using composer install.
+2. Configure the environment on .env
+3. Create a new database in your MySQL server.
+4. Run the migrations using php artisan migrate.
+5. Run the seeders using php artisan db:seed.
+6. Run the command php artisan key:generate to generate a new application key.
+7. Run the command php artisan serve to start the server.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Procedure for Setup Frontend
+1. Install the dependencies using npm install.
+2. Run the command npm run dev to build the assets.
+2. Run the command npm run serve to start the development server.
+3. Open your browser and navigate to http://localhost:8080.
 
-## Code of Conduct
+### Running the Application
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Open your browser and navigate to http://localhost:8000 to access the Travel Planner application.
