@@ -60,3 +60,6 @@ cd trip
 ### Running the Application
 
 Open your browser and navigate to http://localhost:8000 to access the Travel Planner application.
+
+### Contact for any difficulty during installation.
+tobiseyi112@gmail.com
