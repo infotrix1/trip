@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.suggestion-container {
+    @apply relative; /* Ensure the container is positioned relative to allow absolute positioning of the suggestions */
+  }
+
+  .suggestion-list {
+    @apply absolute left-0 right-0 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-10;
+  }
